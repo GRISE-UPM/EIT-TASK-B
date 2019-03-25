@@ -13,6 +13,16 @@ public class ExperimentalObject {
 		
 		// TODO Method stub
 		
+		String[] romanCharacters = { "M", "CM", "D", "C", "XC", "L", "X", "IX", "V", "I" };
+		int[] romanValues = { 1000, 900, 500, 100, 90, 50, 10, 9, 5, 1 };
+
+		for (int i = 0; i < romanValues.length; i++) {
+			int numberInPlace = number / romanValues[i];
+			if (numberInPlace == 0) continue;
+			roman += numberInPlace == 4 && i > 0? romanCharacters[i] + romanCharacters[i - 1]:
+				new String(new char[numberInPlace]).replace("\0",romanCharacters[i]);
+			number = number % romanValues[i];
+		}
 		return roman;
 	}
 
